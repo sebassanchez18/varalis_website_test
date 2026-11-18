@@ -1,0 +1,62 @@
+<section [id]="content.id" class="bg-brand-wash" [attr.aria-labelledby]="content.titleId">
+  <div
+    class="mx-auto grid max-w-page items-stretch gap-stack px-gutter py-gutter sm:px-gutter-sm min-[90rem]:grid-cols-[minmax(0,var(--container-portrait))_minmax(0,1fr)] min-[90rem]:gap-layout min-[90rem]:py-0 min-[90rem]:pr-layout min-[90rem]:pl-0"
+  >
+    <div class="relative min-h-process overflow-hidden rounded-card min-[90rem]:h-full">
+      <img
+        [ngSrc]="content.imageSrc"
+        fill
+        [alt]="content.imageAlt"
+        class="object-cover"
+        sizes="(min-width: 90rem) 39rem, 100vw"
+      />
+    </div>
+
+    <div class="flex flex-col gap-stack-lg py-section-sm min-[90rem]:py-process-y">
+      <div
+        class="flex flex-col items-start gap-step-copy lg:flex-row lg:items-end lg:justify-between"
+      >
+        <div class="flex max-w-copy flex-col gap-step-copy">
+          <p class="font-sans text-eyebrow font-normal text-ink-muted">{{ content.eyebrow }}</p>
+          <h2
+            [id]="content.titleId"
+            class="font-sans text-steps-sm font-semibold text-ink md:text-steps"
+          >
+            {{ content.titleLead }}
+            <span class="block">{{ content.titleRest }}</span>
+          </h2>
+        </div>
+        <app-button class="w-cta" variant="strong" [fullWidth]="true" [href]="content.ctaHref">{{
+          content.ctaLabel
+        }}</app-button>
+      </div>
+
+      <ol class="relative flex flex-col gap-steps-sm md:gap-steps">
+        <img
+          [src]="content.lineSrc"
+          [width]="content.lineWidth"
+          [height]="content.lineHeight"
+          alt=""
+          class="pointer-events-none absolute top-step-center left-step-center z-0 max-w-none origin-top-left rotate-90"
+        />
+        @for (step of content.steps; track step.title; let index = $index) {
+          <li class="relative z-10 flex items-start gap-stack">
+            <span
+              class="flex size-step shrink-0 items-center justify-center rounded-pill bg-brand-strong font-sans text-step-index font-black text-inverse"
+              aria-hidden="true"
+              >{{ index + 1 }}</span
+            >
+            <div class="flex min-w-0 flex-col gap-step-copy">
+              <h3 class="font-sans text-pillar font-bold text-ink">
+                {{ step.title }}
+              </h3>
+              <p class="font-sans text-pillar-body text-ink-muted md:text-pillar">
+                {{ step.description }}
+              </p>
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,86 @@
+<section id="eligibility" class="bg-brand-subtle" [attr.aria-labelledby]="content.hero.titleId">
+  <div
+    class="mx-auto grid max-w-page items-stretch gap-block px-gutter pb-gutter sm:px-gutter-sm lg:grid-cols-2 lg:gap-layout lg:px-layout lg:pb-0"
+  >
+    <div class="flex flex-col items-start justify-center gap-stack-lg py-section-sm lg:py-hero-y">
+      <div class="flex max-w-3xl flex-col gap-stack">
+        <h1
+          [id]="content.hero.titleId"
+          class="font-sans text-display-sm font-semibold text-ink sm:text-display-md lg:text-display"
+        >
+          {{ content.hero.titleLead }}
+          <span class="mt-1 block text-brand sm:mt-2">{{ content.hero.titleAccent }}</span>
+        </h1>
+        <p class="font-sans text-lead-sm text-ink-muted sm:text-lead-md lg:text-lead">
+          {{ content.hero.description }}
+        </p>
+      </div>
+      <app-button variant="brand" [href]="content.cta.href">
+        {{ content.cta.label }}
+      </app-button>
+    </div>
+
+    <article
+      class="relative flex min-h-case-min flex-col justify-end overflow-hidden rounded-card sm:min-h-case-min-sm lg:min-h-full"
+      aria-roledescription="carousel"
+      aria-labelledby="featured-case-title"
+    >
+      <img
+        [ngSrc]="content.hero.imageSrc"
+        fill
+        priority
+        [alt]="content.hero.imageAlt"
+        class="object-cover"
+        sizes="(min-width: 1024px) 50vw, 100vw"
+      />
+      <div class="pointer-events-none absolute inset-0 bg-hero-scrim" aria-hidden="true"></div>
+      <div
+        class="relative z-10 flex flex-col gap-stack p-stack text-inverse sm:p-8 lg:py-card-y lg:pr-card-end lg:pl-card-x"
+      >
+        <div class="flex flex-col gap-case-gap" aria-live="polite">
+          <h2
+            id="featured-case-title"
+            class="font-sans text-case-title-sm font-semibold lg:text-case-title"
+          >
+            {{ featuredCase().title }}
+          </h2>
+          <p class="font-sans text-case-body-sm sm:text-case-body-md lg:text-case-body">
+            {{ featuredCase().description }}
+          </p>
+        </div>
+        <div class="flex items-center justify-between gap-stack">
+          <div
+            class="flex items-center gap-dot-gap"
+            role="group"
+            [attr.aria-label]="content.hero.paginationLabel"
+          >
+            @for (item of content.hero.cases; track item.title; let index = $index) {
+              <button
+                type="button"
+                class="relative size-dot rounded-pill before:absolute before:-inset-2 before:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-inverse"
+                [class.bg-inverse]="caseIndex() === index"
+                [class.bg-inverse/50]="caseIndex() !== index"
+                [attr.aria-current]="caseIndex() === index ? 'true' : null"
+                [attr.aria-label]="slideLabel(index)"
+                (click)="showCase(index)"
+              ></button>
+            }
+          </div>
+          <app-button
+            variant="light"
+            shape="pill"
+            [ariaLabel]="content.hero.nextCaseLabel"
+            (click)="nextCase()"
+          >
+            <img
+              [src]="content.hero.arrowSrc"
+              [width]="content.hero.arrowWidth"
+              [height]="content.hero.arrowHeight"
+              alt=""
+            />
+          </app-button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

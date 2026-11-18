@@ -1,0 +1,13 @@
+<ng-template #label>
+  <ng-content />
+</ng-template>
+
+@if (href(); as link) {
+  <a [href]="link" [class]="classes()" [attr.aria-label]="ariaLabel() ?? null">
+    <ng-container [ngTemplateOutlet]="label" />
+  </a>
+} @else {
+  <button [type]="buttonType()" [class]="classes()" [attr.aria-label]="ariaLabel() ?? null">
+    <ng-container [ngTemplateOutlet]="label" />
+  </button>
+}

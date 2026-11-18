@@ -1,0 +1,144 @@
+@import 'tailwindcss';
+
+/*
+  Tailwind v4 reads its theme from CSS. These tokens are the Varalis
+  desktop frame (1728px): color, Outfit, spacing, and radius.
+  Fluid spacing tracks that frame and still fits the lg breakpoint.
+*/
+@theme {
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand: #a98035;
+  --color-brand-strong: #193177;
+  --color-brand-subtle: #ffedd1;
+  --color-ink: #141a25;
+  --color-ink-muted: #373e4d;
+  --color-inverse: #ffffff;
+  --color-brand-wash: rgb(25 49 119 / 0.05);
+  --color-brand-muted: #d6ddff;
+
+  --text-logo-sm: 1.375rem;
+  --text-logo-sm--line-height: 1;
+  --text-logo: 1.98075rem;
+  --text-logo--line-height: 1;
+  --text-logo-sub: 0.6875rem;
+  --text-logo-sub--line-height: 1.2;
+  --text-logo-footer: 2.6019375rem;
+  --text-logo-footer--line-height: 1;
+  --text-logo-footer-sub: 0.903125rem;
+  --text-logo-footer-sub--line-height: 1.2;
+
+  --text-nav: 1.25rem;
+  --text-nav--line-height: 1.2;
+
+  --text-display-sm: 2rem;
+  --text-display-sm--line-height: 1.15;
+  --text-display-md: 2.75rem;
+  --text-display-md--line-height: 1.12;
+  --text-display: 3.6875rem;
+  --text-display--line-height: 1.1;
+
+  --text-lead-sm: 1.0625rem;
+  --text-lead-sm--line-height: 1.5;
+  --text-lead-md: 1.25rem;
+  --text-lead-md--line-height: 1.45;
+  --text-lead: 1.875rem;
+  --text-lead--line-height: 1.35;
+
+  --text-case-title-sm: 1.75rem;
+  --text-case-title-sm--line-height: 1.2;
+  --text-case-title: 2.5rem;
+  --text-case-title--line-height: 1.15;
+
+  --text-case-body-sm: 1rem;
+  --text-case-body-sm--line-height: 1.45;
+  --text-case-body-md: 1.125rem;
+  --text-case-body-md--line-height: 1.45;
+  --text-case-body: 1.5rem;
+  --text-case-body--line-height: 1.35;
+
+  --text-eyebrow: 1.125rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-section-sm: 1.875rem;
+  --text-section-sm--line-height: 1.2;
+  --text-section: 2.5rem;
+  --text-section--line-height: 1.15;
+  --text-pillar: 1.5rem;
+  --text-pillar--line-height: 1.25;
+  --text-pillar-body-sm: 1rem;
+  --text-pillar-body-sm--line-height: 1.45;
+  --text-pillar-body: 1.125rem;
+  --text-pillar-body--line-height: 1.4;
+
+  --text-steps-sm: 2rem;
+  --text-steps-sm--line-height: 1.15;
+  --text-steps: 3.125rem;
+  --text-steps--line-height: 1.26;
+  --text-privacy-sm: 2.25rem;
+  --text-privacy-sm--line-height: 1.15;
+  --text-privacy: 3.75rem;
+  --text-privacy--line-height: 1.27;
+  --text-step-index: 1.5rem;
+  --text-step-index--line-height: 1;
+
+  --spacing-band: 0.625rem;
+  --spacing-hit: 2.75rem;
+  --spacing-gutter: 1.25rem;
+  --spacing-gutter-sm: 1.5rem;
+  --spacing-button-x: 1.5rem;
+  --spacing-button-y: 1rem;
+  --spacing-header-y: 1.5rem;
+  --spacing-logo: 0.75rem;
+  --spacing-logo-footer: 0.9851875rem;
+  --spacing-stack: 1.5rem;
+  --spacing-stack-lg: 3rem;
+  --spacing-block: 2.5rem;
+  --spacing-nav: clamp(1.25rem, 2.5vw, 3rem);
+  --spacing-layout: clamp(1.5rem, 5.8vw, 6.25rem);
+  --spacing-section-sm: 3rem;
+  --spacing-section: clamp(4.5rem, 10vw, 12.5rem);
+  --spacing-process-y: clamp(4.5rem, 11.574vw, 12.5rem);
+  --spacing-pillar-sm: 24rem;
+  --spacing-pillar: 30.1875rem;
+  --spacing-pillar-gap: 0.5rem;
+  --spacing-hero-y: clamp(4.5rem, 8vw, 9.375rem);
+  --spacing-card-x: 2.75rem;
+  --spacing-card-end: 6.3125rem;
+  --spacing-card-y: 4.5rem;
+  --spacing-case-gap: 0.6875rem;
+  --spacing-dot: 0.625rem;
+  --spacing-dot-gap: 0.5rem;
+  --spacing-case-min: 28rem;
+  --spacing-case-min-sm: 32rem;
+  --spacing-control-h: 3.5rem;
+  --spacing-control-w: 4.5rem;
+  --spacing-step: 2.5625rem;
+  --spacing-step-center: 1.28125rem;
+  --spacing-step-copy: 1rem;
+  --spacing-steps-sm: 4.25rem;
+  --spacing-steps: 6.25rem;
+  --spacing-process: 22rem;
+
+  --radius-button: 0.25rem;
+  --radius-card: 0.75rem;
+  --radius-pill: 999px;
+
+  --container-page: 108rem;
+  --container-copy: 58.125rem;
+  --container-portrait: 38.875rem;
+
+  --spacing-cta: 12.4375rem;
+
+  --background-image-pillar-scrim: linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 0) 34%,
+    rgb(169 128 53 / 0.78) 68%,
+    var(--color-brand) 100%
+  );
+  --background-image-hero-scrim: linear-gradient(
+    to bottom,
+    rgb(221 221 221 / 0) 32%,
+    rgb(25 49 119 / 0.55) 58%,
+    var(--color-brand-strong) 82%
+  );
+}

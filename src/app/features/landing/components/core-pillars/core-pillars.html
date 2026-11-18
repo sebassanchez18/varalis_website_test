@@ -1,0 +1,55 @@
+<section [id]="content.id" class="bg-inverse" [attr.aria-labelledby]="content.titleId">
+  <div
+    class="mx-auto flex max-w-page flex-col items-center gap-stack-lg px-gutter py-section-sm sm:px-gutter-sm md:py-section lg:px-layout"
+  >
+    <div class="flex w-full max-w-copy flex-col items-center gap-stack text-center">
+      <div class="flex flex-col gap-stack">
+        <p class="font-sans text-eyebrow font-normal text-ink-muted">{{ content.eyebrow }}</p>
+        <h2
+          [id]="content.titleId"
+          class="font-sans text-section-sm font-semibold text-ink md:text-section"
+        >
+          {{ content.title }}
+        </h2>
+      </div>
+      <p class="font-sans text-lead-sm text-ink-muted md:text-case-body">
+        {{ content.description }}
+      </p>
+    </div>
+
+    <ul class="grid w-full grid-cols-1 gap-stack md:grid-cols-2 lg:grid-cols-3">
+      @for (pillar of content.items; track pillar.title) {
+        <li class="min-w-0 md:last:col-span-2 lg:last:col-span-1">
+          <article
+            class="relative flex h-full min-h-pillar-sm flex-col justify-between overflow-hidden rounded-card p-stack lg:min-h-pillar"
+          >
+            <img
+              [ngSrc]="pillar.imageSrc"
+              fill
+              [alt]="pillar.imageAlt"
+              class="object-cover"
+              sizes="(min-width: 1024px) 30vw, (min-width: 768px) 50vw, 100vw"
+            />
+            <div
+              class="pointer-events-none absolute inset-0 bg-pillar-scrim"
+              aria-hidden="true"
+            ></div>
+            <img
+              [src]="pillar.iconSrc"
+              [width]="pillar.iconWidth"
+              [height]="pillar.iconHeight"
+              alt=""
+              class="relative z-10 shrink-0"
+            />
+            <div class="relative z-10 flex flex-col gap-pillar-gap text-inverse">
+              <h3 class="font-sans text-pillar font-bold">{{ pillar.title }}</h3>
+              <p class="font-sans text-pillar-body-sm sm:text-pillar-body">
+                {{ pillar.description }}
+              </p>
+            </div>
+          </article>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

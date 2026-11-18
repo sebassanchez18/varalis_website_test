@@ -1,0 +1,82 @@
+<div
+  class="mx-auto grid max-w-page grid-cols-[1fr_auto] items-center gap-gutter px-gutter py-header-y sm:px-gutter-sm lg:grid-cols-[1fr_auto_1fr] lg:px-layout"
+>
+  <a
+    href="#top"
+    class="flex items-center gap-logo justify-self-start rounded-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-strong"
+    [attr.aria-label]="content.logo.homeLabel"
+  >
+    <img
+      [src]="content.logo.markSrc"
+      [width]="content.logo.markWidth"
+      [height]="content.logo.markHeight"
+      alt=""
+      class="shrink-0"
+    />
+    <span class="flex flex-col text-brand-strong">
+      <span class="font-sans text-logo-sm font-normal lg:text-logo">{{ content.logo.name }}</span>
+      <span class="font-sans text-logo-sub font-normal">
+        {{ content.logo.poweredBy }}
+        <span class="font-semibold">{{ content.logo.brand }}</span>
+      </span>
+    </span>
+  </a>
+
+  <button
+    #menuButton
+    type="button"
+    class="inline-flex size-hit items-center justify-center justify-self-end rounded-button text-brand-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-strong lg:hidden"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="primary-navigation"
+    (click)="toggleMenu()"
+  >
+    <span class="sr-only">{{ menuOpen() ? content.menu.close : content.menu.open }}</span>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      @if (menuOpen()) {
+        <path
+          d="M6 6L18 18M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+        />
+      } @else {
+        <path
+          d="M4 7H20M4 12H20M4 17H20"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+        />
+      }
+    </svg>
+  </button>
+
+  <nav #panel id="primary-navigation" [class]="panelClass()" [attr.aria-label]="content.menu.label">
+    <ul class="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-nav">
+      @for (item of content.nav; track item.href) {
+        <li>
+          <a
+            [href]="item.href"
+            class="inline-flex py-2 font-sans text-nav text-ink hover:text-brand-strong focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-strong lg:py-0"
+            (click)="closeMenu()"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+    <app-button
+      class="w-full lg:hidden"
+      variant="brand"
+      [href]="content.cta.href"
+      [fullWidth]="true"
+    >
+      {{ content.cta.label }}
+    </app-button>
+  </nav>
+
+  <div class="hidden justify-self-end lg:flex">
+    <app-button variant="brand" [href]="content.cta.href">
+      {{ content.cta.label }}
+    </app-button>
+  </div>
+</div>

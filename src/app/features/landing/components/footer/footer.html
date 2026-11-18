@@ -1,0 +1,46 @@
+<footer class="bg-brand-subtle">
+  <div
+    class="mx-auto grid max-w-page gap-stack px-gutter py-section-sm sm:grid-cols-2 sm:px-gutter-sm lg:grid-cols-4 lg:gap-layout lg:px-layout lg:py-layout"
+  >
+    <div class="flex flex-col items-start gap-stack">
+      <a
+        href="#top"
+        class="flex items-center gap-logo-footer rounded-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-strong"
+        [attr.aria-label]="logo.homeLabel"
+      >
+        <img
+          [src]="content.logo.markSrc"
+          [width]="content.logo.markWidth"
+          [height]="content.logo.markHeight"
+          alt=""
+          class="shrink-0"
+        />
+        <span class="flex flex-col text-brand-strong">
+          <span class="font-sans text-logo font-normal lg:text-logo-footer">{{ logo.name }}</span>
+          <span class="font-sans text-logo-sub font-normal lg:text-logo-footer-sub">
+            {{ logo.poweredBy }}
+            <span class="font-semibold">{{ logo.brand }}</span>
+          </span>
+        </span>
+      </a>
+      <p class="font-sans text-eyebrow font-normal text-ink">{{ content.tagline }}</p>
+    </div>
+
+    @for (group of content.groups; track group.title) {
+      <nav class="flex flex-col items-start gap-stack" [attr.aria-label]="group.title">
+        <h2 class="font-sans text-eyebrow font-normal text-ink">{{ group.title }}</h2>
+        <ul class="flex flex-col items-start gap-step-copy">
+          @for (link of group.links; track link.label) {
+            <li>
+              <a
+                [href]="link.href"
+                class="font-sans text-pillar-body text-ink underline-offset-4 hover:underline focus-visible:rounded-button focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-strong lg:text-pillar"
+                >{{ link.label }}</a
+              >
+            </li>
+          }
+        </ul>
+      </nav>
+    }
+  </div>
+</footer>
